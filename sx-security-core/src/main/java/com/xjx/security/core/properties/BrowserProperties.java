@@ -1,6 +1,8 @@
 package com.xjx.security.core.properties;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author XJX
@@ -8,6 +10,8 @@ import lombok.Data;
  * @Version 1.0
  */
 @Data
+@Component
+@ConfigurationProperties(prefix = "sx.security.browser")
 public class BrowserProperties {
     /**指定默认的登陆页面*/
     private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;

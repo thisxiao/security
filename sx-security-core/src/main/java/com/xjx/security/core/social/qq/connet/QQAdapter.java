@@ -15,8 +15,8 @@ public class QQAdapter implements ApiAdapter<QQ> {
 
     /**
      * 测试当前服务是否可以使用
-     * @param api
-     * @return
+     * @param api the qq
+     * @return true/false
      */
     @Override
     public boolean test(QQ api) {
@@ -27,8 +27,8 @@ public class QQAdapter implements ApiAdapter<QQ> {
      *
      * 将我们从QQ获取的用户信息设置成Connection对象相对应的字段信息
      * 记住：connection对象的字段是固定的
-     * @param api
-     * @param values
+     * @param api the qq
+     * @param values connection
      */
     @Override
     public void setConnectionValues(QQ api, ConnectionValues values) {
@@ -41,8 +41,8 @@ public class QQAdapter implements ApiAdapter<QQ> {
 
     /**
      * 同上面的方法一样也是通过api拿到一个标准的用户信息---》之后会讲
-     * @param api
-     * @return
+     * @param api the qq
+     * @return 用户标准信息
      */
     @Override
     public UserProfile fetchUserProfile(QQ api) {
@@ -51,8 +51,8 @@ public class QQAdapter implements ApiAdapter<QQ> {
 
     /***
      * 微博等更新主页信息---这里不用管
-     * @param api
-     * @param message
+     * @param api the qq
+     * @param message 主页
      */
     @Override
     public void updateStatus(QQ api, String message) {
