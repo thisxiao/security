@@ -2,6 +2,7 @@ package com.xjx.security.core.social.weixin.connet;
 
 import com.xjx.security.core.social.weixin.api.WeiXin;
 import com.xjx.security.core.social.weixin.api.impl.WeiXinImpl;
+import org.springframework.boot.web.embedded.tomcat.TomcatEmbeddedWebappClassLoader;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
 
 /**

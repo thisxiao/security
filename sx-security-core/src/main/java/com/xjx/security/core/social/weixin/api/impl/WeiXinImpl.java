@@ -37,7 +37,7 @@ public class WeiXinImpl extends AbstractOAuth2ApiBinding implements WeiXin {
         List<HttpMessageConverter<?>> messageConverters = super.getMessageConverters();
         messageConverters.remove(0);
         messageConverters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
-        return super.getMessageConverters();
+        return messageConverters;
     }
 
     /**
@@ -55,6 +55,7 @@ public class WeiXinImpl extends AbstractOAuth2ApiBinding implements WeiXin {
         }
         WeiXinUserInfo userInfo = null;
         try{
+            log.info("获取微信用户信息：{}",response);
             userInfo = JSON.parseObject(response, WeiXinUserInfo.class);
         } catch (Exception e) {
             e.printStackTrace();

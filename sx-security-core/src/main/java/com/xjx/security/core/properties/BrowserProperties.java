@@ -21,4 +21,6 @@ public class BrowserProperties {
     private String signUpUrl = SecurityConstants.DEFAULT_SIGNUP_URL;
     /**记住我的时间3600秒即1小时*/
     private int rememberMeSeconds = 3600;
+    /**session相关的配置如session最大并发数量等*/
+    private SessionProperties session = new SessionProperties();
 }
