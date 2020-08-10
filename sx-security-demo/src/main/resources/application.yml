@@ -40,6 +40,7 @@ sx:
   security:
     browser:
       sign-up-url: /demo-signUp.html
+      sign-out-url: /demo-signOut.html
     #    browser:
 #      signUpUrl: /demo-signUp.html
 

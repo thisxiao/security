@@ -33,11 +33,9 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     @Resource
     private Map<String, ValidateCodeGenerator> validateCodeGenerators;
 
-    /*
+    /**
      * (non-Javadoc)
-     * @see
-     * com.xjx.security.core.validate.code.processor.ValidateCodeProcessor#create(org.
-     * springframework.web.context.request.ServletWebRequest)
+     * @see com.xjx.security.core.validate.code.processor.ValidateCodeProcessor#create(org.springframework.web.context.request.ServletWebRequest)
      */
     @Override
     public void create(ServletWebRequest request) throws Exception {

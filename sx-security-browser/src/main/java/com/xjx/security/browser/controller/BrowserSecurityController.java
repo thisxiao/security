@@ -1,9 +1,9 @@
 package com.xjx.security.browser.controller;
 
 import com.xjx.security.browser.pojo.SocialUserInfo;
-import com.xjx.security.browser.support.SimpleResponse;
 import com.xjx.security.core.properties.SecurityConstants;
 import com.xjx.security.core.properties.SecurityProperties;
+import com.xjx.security.core.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;

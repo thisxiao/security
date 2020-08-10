@@ -1,4 +1,4 @@
-package com.xjx.security.browser.support;
+package com.xjx.security.core.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

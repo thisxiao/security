@@ -23,6 +23,11 @@
             <artifactId>sx-security-browser</artifactId>
             <version>${sx-security-version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.xjx.security</groupId>-->
+<!--            <artifactId>sx-security-app</artifactId>-->
+<!--            <version>${sx-security-version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

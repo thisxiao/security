@@ -1,18 +1,17 @@
 package com.xjx.security.browser.config;
 
-import com.xjx.security.browser.session.SxExpiredSessionStrategy;
 import com.xjx.security.core.authentication.AbstractChannelSecurityConfig;
 import com.xjx.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.xjx.security.core.properties.SecurityConstants;
 import com.xjx.security.core.properties.SecurityProperties;
 import com.xjx.security.core.validate.code.config.ValidateCodeSecurityConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
@@ -54,6 +53,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     @Resource
     private InvalidSessionStrategy invalidSessionStrategy;
 
+    @Resource
+    private LogoutSuccessHandler logoutSuccessHandler;
+
     /**
      * 登录过滤器配置
      * @param http 请求
@@ -69,7 +71,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             //短信校验相关配置
             .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-            //springsocial校验相关配置
+            //springSocial校验相关配置
             .apply(sxSocialSecurityConfig)
                 .and()
             //记住我相关配置
@@ -90,6 +92,13 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .expiredSessionStrategy(sessionInformationExpiredStrategy)
                 .and()
                 .and()
+            .logout()
+                //退出登录路径
+                .logoutUrl("/signOut")
+                .logoutSuccessHandler(logoutSuccessHandler)
+                //退出登录时删除cookie里面的信息
+                .deleteCookies("JSESSIONID")
+                .and()
             .authorizeRequests()
                 //配置不用进行认证校验的url
                 .antMatchers(
@@ -102,14 +111,16 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                     securityProperties.getBrowser().getSignUpUrl(),
                     //session失效默认的跳转地址
                     securityProperties.getBrowser().getSession().getSessionInvalidUrl(),
+                    //退出登录页面
+                    securityProperties.getBrowser().getSignOutUrl(),
                     "/user/register")
                     .permitAll()
-                //指明除了上面不用认证的url外其他请求都需要认证校验
-                .anyRequest()
+                    //指明除了上面不用认证的url外其他请求都需要认证校验
+                    .anyRequest()
                 .authenticated()
                 .and()
-                //关闭csrf
-                .csrf().disable();
+            //关闭csrf
+            .csrf().disable();
     }
 
     @Bean

@@ -1,11 +1,10 @@
-package com.xjx.security.browser.authentication;
+package com.xjx.security.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xjx.security.core.properties.LoginType;
 import com.xjx.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -36,8 +35,6 @@ public class SzAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
 
         if(LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
             httpServletResponse.setContentType("application/json;charset=UTF-8");
-            authentication.getAuthorities();
-            authentication.getCredentials();
             httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));
         }else{
             super.onAuthenticationSuccess(httpServletRequest,httpServletResponse,authentication);
