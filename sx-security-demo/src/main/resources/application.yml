@@ -68,3 +68,10 @@ sx:
 #        providerId: callback.do
 #      filterProcessesUrl: /qqLogin
 
+security:
+  oauth2:
+    client:
+      client-id: sx
+      client-secret: sxsecret
+      registered-redirect-uri: http://example.com
+

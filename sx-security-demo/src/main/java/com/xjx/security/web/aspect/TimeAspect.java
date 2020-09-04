@@ -15,8 +15,8 @@ import java.util.Date;
  * @Version 1.0
  */
 @Slf4j
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class TimeAspect {
 
     @Around("execution(* com.xjx.security.web.controller.UserController.*(..)) && (@annotation(com.fasterxml.jackson.annotation.JsonView))")

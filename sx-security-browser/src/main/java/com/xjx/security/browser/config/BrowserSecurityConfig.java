@@ -20,6 +20,7 @@ import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.sql.Connection;
 
 /**
  * @Author XJX
@@ -123,10 +124,6 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             .csrf().disable();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository(){

@@ -17,7 +17,7 @@ import java.util.Date;
  * @Version 1.0
  */
 @Slf4j
-@Component
+//@Component
 public class TimeInterceptor implements HandlerInterceptor {
 
     @Override
